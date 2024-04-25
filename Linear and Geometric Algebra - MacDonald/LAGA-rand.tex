@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage[fleqn]{mathtools}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
+\DeclareMathSizes{10}{10}{9}{7}
+\hyphenpenalty=10000
+
+\newcommand{\p}{\partial}
+\newcommand{\fpd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\spd}[2][]{\frac{\partial^2 #1}{\partial #2}}
+\newcommand{\hsp}[1][5]{\hspace{0.#1 cm}}
+\newcommand{\hcm}[1][1]{\hspace{#1 cm}}
+\newcommand{\bra}[1][1.2]{\scalebox{#1}{$\boldsymbol{\langle}$}}
+\newcommand{\ket}[1][1.2]{\scalebox{#1}{$\boldsymbol{\rangle}$}}
+\newcommand{\hh}{\hbar}
+\newcommand{\dint}[4][0]{\int_{#1}^{#2} #3 \ d#4}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\rimplies}{\Longleftarrow}
+\newcommand{\rimp}{\Leftarrow}
+\newcommand{\siff}{\Leftrightarrow}
+\newcommand{\st}{\ : \ }
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\G}[1][n]{\mathcal{G}_#1}
+
+\newcommand{\ch}[1]{\text{#1}}
+\newcommand{\tdeg}{$^{\circ}$}
+\newcommand{\mdeg}{^{\circ}}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+\newcommand{\inr}{{\mspace{2mu}\bigcdot\mspace{2mu}}}
+\newcommand{\otr}{\raisebox{0.1ex}{\scalebox{0.7}{$\boldsymbol{\wedge}$}}}
+\newcommand{\x}{{\times}}
+\newcommand{\rev}{^\dag}
+\newcommand{\nsubg}{\trianglelefteq}
+
+\newcommand{\FLIPINDEX}[1]{{\scalebox{1}[-1]{$\scriptscriptstyle{#1}$}}}
+\newcommand{\FLIPARG}[1]{{\scalebox{1}[-1]{$\mkern2mu#1$}}}
+
+
+\newcommand{\dspt}{\displaystyle} 
+
+\begin{document}
+\begin{center}
+LAGA random notes
+\end{center}
+\begin{flushleft}
+
+Hi, Peter here to explain the joke.\\\hcm
+
+Euler's formula (well, one of them...) says $e^{\theta i} = \cos(\theta) + i\sin(\theta)$. So $e^{\theta i}$ is just shorthand for a vector of sorts, spinning in a circle according to $\theta$. We add vectors by putting the head of one on the tail of the other, hence why graphing $\dspt e^{\theta i} + e^{\pi\theta i}$ looks like that.\\\hcm
+
+Suppose while graphing $\dspt e^{\theta i} + e^{\pi\theta i}$, we find it ``covers its own tracks'', i.e. there exists $\theta_0,\ \theta_1$ such that\\\hcm 
+
+ $(\theta_0 = \theta_1 \mod 2\pi)$ and $(\theta_0\pi = \theta_1\pi \mod 2\pi)$. \\\hcm
+
+I.e. we just want to see if there is an initial condition $\theta_0$ which comes with a final point $\theta_1$ that puts the two vectors defined in each half of the function in the same ``configuration'' that it started with.\\\hcm
+
+Letting $\phi = \theta/2$, this is the same as saying:\\\hcm
+
+$(\phi_0/\pi = \phi_1/\pi \mod 1)$ and $(\phi_0 = \phi_1 \mod 1)$\\\hcm
+
+The second condition says that $\phi_0$ and $\phi_1$ are rational ``with respect to each other":\\\hcm $(\phi_0 = \phi_1 \mod 1) \iff (\phi_0 - \phi_1 = 0 \mod 1) \iff \phi_0 - \phi_1$ is an integer.\\\hsp
+
+The first condition says similar:\\\hcm
+$(\phi_0 - \phi_1)/\pi$ is some integer $\dspt d \iff \pi = \frac{\phi_0 - \phi_1}{d}$\\\hcm
+
+So if the graph ever began tracing over itself, this is equivalent to saying we've found a rational expression for $\pi$. 
+
+
+\end{flushleft}
+\end{document}

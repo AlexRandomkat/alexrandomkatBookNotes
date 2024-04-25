@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage[fleqn]{mathtools}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
+\DeclareMathSizes{10}{10}{9}{7}
+\hyphenpenalty=10000
+
+\newcommand{\p}{\partial}
+\newcommand{\fpd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\spd}[2][]{\frac{\partial^2 #1}{\partial #2}}
+\newcommand{\hsp}[1][5]{\hspace{0.#1 cm}}
+\newcommand{\hcm}[1][1]{\hspace{#1 cm}}
+\newcommand{\bra}[1][1.2]{\scalebox{#1}{$\boldsymbol{\langle}$}}
+\newcommand{\ket}[1][1.2]{\scalebox{#1}{$\boldsymbol{\rangle}$}}
+\newcommand{\hh}{\hbar}
+\newcommand{\dint}[4][0]{\int_{#1}^{#2} #3 \ d#4}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\rimplies}{\Longleftarrow}
+\newcommand{\rimp}{\Leftarrow}
+\newcommand{\siff}{\Leftrightarrow}
+\newcommand{\st}{\ : \ }
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\G}[1][n]{\mathcal{G}_#1}
+
+\newcommand{\ch}[1]{\text{#1}}
+\newcommand{\tdeg}{$^{\circ}$}
+\newcommand{\mdeg}{^{\circ}}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+\newcommand{\inr}{{\mspace{2mu}\bigcdot\mspace{2mu}}}
+\newcommand{\otr}{\raisebox{0.1ex}{\scalebox{0.7}{$\boldsymbol{\wedge}$}}}
+\newcommand{\x}{{\times}}
+\newcommand{\rev}{^\dag}
+\newcommand{\nsubg}{\trianglelefteq}
+
+\newcommand{\FLIPINDEX}[1]{{\scalebox{1}[-1]{$\scriptscriptstyle{#1}$}}}
+\newcommand{\FLIPARG}[1]{{\scalebox{1}[-1]{$\mkern2mu#1$}}}
+
+
+\newcommand{\dspt}{\displaystyle} 
+
+\begin{document}
+\begin{center}
+D\&F alternate proofs
+\end{center}
+\begin{flushleft}
+\hangindent=1.1cm 
+
+
+inter 3.4.-3: For $S\subseteq G$, $(uS)v = u(Sv)$\\\hcm
+Proof: $(uS)v = \{hv \st h\in uS\} = \{usv \st s \in S\} = \{ui \st i \in Sv\} = u(Sv)$\\\hcm
+So writing $uSv$ is unambiguous. Similarly for $uvS$ and $Suv$. Same .\\\hcm
+
+
+inter 3.4.-2: For $S, T \subseteq G$, $gS = gT \iff S = T \iff Sg = Tg$\\\hcm
+Proof: The right/left action of $g$ on $G$ is a permutation, so this follows from the invertibility of bijections.\\\hcm
+
+
+inter 3.4.-1: For $S\subseteq G$, $h^{-1}g \in S \iff g \in hS$\\[2pt]\hcm
+Proof: $h^{-1}g \in S \implies \exists s\in S \st h^{-1}g = s \implies g = hs \implies g \in hS$\\\hcm
+$g \in hS \implies \exists s \in S \st g = hs \implies h^{-1}g = s \imp h^{-1}g \in S$\\[3pt]\hcm
+Similarly, $gh^{-1}\in S \iff g\in Sh$\\[12pt]
+
+\textbf{prop 3.4: } $N \leq G \implies \{gN \st g \in G\} $ and $\{Ng \st g \in G\}$ are both partitions of $G$\\\hcm
+Proof: Let $g \sim h$ to mean $g \in hN$\\\hcm
+Then $\exists n\in N \st g = hn \implies gn^{-1} = h \implies h \in gN \implies h \sim g$\\\hcm
+Let $g\sim h$ and $h\sim i$, then $\exists n,m\in N \st g = hn,$ $h = im \implies g = imn \imp g \in iN \imp g\sim i$\\\hcm
+$1\in N \implies g\sim g$, so $\sim$ is an equivalence relation partitioning $G$\\[12pt]
+
+inter 3.4.1: For $N\leq G$, $uN = vN \iff u \in vN \iff v \in uN$\\\hcm
+Proof: Follows from prop 3.4 and $1 \in N$.\\\hcm Note we can restate the equivalence relation in the proof for 3.4 as $g \sim h \iff gN = hN$ now.\\\hcm
+Similarly, $Nu = Nv \iff u \in Nv \iff v \in Nu$\\[12pt]
+
+inter 3.4.2: For $N\leq G$, $\forall n\in N,\ uN = unN$\\\hcm
+Proof: $1 \in nN \iff N = nN \implies uN = unN$\\\hcm
+
+
+inter 3.4.3: $\{gN \st g \in G\} = \{Ng \st g \in G\} \iff N \trianglelefteq G$\\\hcm
+Proof: $\{gN \st g \in G\} = \{Ng \st g \in G\} \iff \forall g \in G,\ gN = Ng$ as $1\in N$ and from prop 3.4.\\\hcm
+$gN = Ng \iff \forall r \in gN \lt( \ r\in Ng \iff rg^{-1} \in N \rt) \iff gNg^{-1} = N$\\\hcm
+(the outer $\iff$ arrows hold due to $S \subseteq G$, $gS \leftrightarrow S \leftrightarrow Sg$ being bijections)\\\hcm
+
+\textbf{prop 3.5:} multiplication $uN \inr vN = uvN$ is well defined $\iff N \nsubg G$\\\hcm
+Proof: Let $uN \inr bN = uvN$ be well defined, i.e. for $u,v \in uN,\ b,d \in bN$, we have $ubN = vdN$. Then,\\\hcm $\forall g \in G, \lt(\forall n\in N, \lt(1gN = ngN \iff ng\in gN\iff g^{-1}ng \in N \rt) \iff gNg^{-1} = N\rt) \iff N\nsubg G$\\\hcm
+Conversely, $N\nsubg G \implies \forall n,m \in N,\ unN \inr vmN = unvmN = unNmv = uNv = uvN$.\\\hcm
+Technically the first line suffices, but adding the extra variable makes it messy. And the converse is cool.\\\hcm
+
+\textbf{prop 3.13: }For $\dspt H, K\leq G,\ |HK| = \frac{|H||K|}{|H\cap K|}$\\\hcm
+Proof: $\dspt HK = \bigcup_{h \in H}hK$, \ \ $K\leq G$ means any two $hK$'s are either disjoint or identical. $h_1K = h_2K \iff h_2^{-1}h_1 \in K \iff h_2^{-1}h_1 \in H\cap K \iff h_1H\cap K = h_2H\cap K$\\\hcm
+$\dspt \implies |HK| = \frac{|H|}{|H\cap K|}|K|$\\\hcm
+\ \\\hcm
+
+\textbf{prop 3.14: }For $H, K \leq G$, \ \ $HK \leq G \iff HK = KH$\\\hcm
+\ \\\hcm
+
+\textbf{coll 3.15: }$H, K \leq G$ and $H\leq N_G(K) \iff HK \leq G$\\\hcm	
+Proof: $\forall h \in H, k\in K \lt(hkh^{-1} \in K \implies hk \in Kh \in KH\rt) \implies HK \subseteq KH$\\\hcm 
+Similarly, $kh = h(h^{-1}kh) \in hK \in HK \implies KH \subseteq HK$, so $KH = HK$.\\\hcm
+\end{flushleft}
+\end{document}

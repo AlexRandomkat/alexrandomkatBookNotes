@@ -1,0 +1,175 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage[fleqn]{mathtools}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
+\usepackage{xcolor}
+\DeclareMathSizes{10}{10}{9}{7}
+\hyphenpenalty=10000
+
+\newcommand{\p}{\partial}
+\newcommand{\fpd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\spd}[2][]{\frac{\partial^2 #1}{\partial #2}}
+\newcommand{\hsp}[1][5]{\hspace{0.#1 cm}}
+\newcommand{\hcm}[1][1]{\hspace{#1 cm}}
+\newcommand{\bra}[1][1.2]{\scalebox{#1}{$\boldsymbol{\langle}$}}
+\newcommand{\nl}[1][12]{\\[#1pt]}
+\newcommand{\ket}[1][1.2]{\scalebox{#1}{$\boldsymbol{\rangle}$}}
+\newcommand{\hh}{\hbar}
+\newcommand{\dint}[4][0]{\int_{#1}^{#2} #3 \ d#4}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\imp}{\ \Rightarrow\ }
+\newcommand{\rimplies}{\Longleftarrow}
+\newcommand{\rimp}{\ \Leftarrow\ }
+\newcommand{\siff}{\ \Leftrightarrow\ }
+\newcommand{\st}{\ : \ }
+\newcommand{\defeq}{\vcentcolon=}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\G}[1][n]{\mathcal{G}_#1}
+
+\newcommand{\ch}[1]{\text{#1}}
+\newcommand {\chb}[1]{\textbf{#1}}
+\newcommand{\tdeg}{$^{\circ}$}
+\newcommand{\mdeg}{^{\circ}}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+\newcommand{\inr}{{\mspace{2mu}\bigcdot\mspace{2mu}}}
+\newcommand{\otr}{\raisebox{0.1ex}{\scalebox{0.7}{$\boldsymbol{\wedge}$}}}
+\newcommand{\x}{{\times}}
+\newcommand{\rev}{^\dag}
+\newcommand{\nsubg}{\trianglelefteq}
+
+\newcommand{\FLIPINDEX}[1]{{\scalebox{1}[-1]{$\scriptscriptstyle{#1}$}}}
+\newcommand{\FLIPARG}[1]{{\scalebox{1}[-1]{$\mkern2mu#1$}}}
+
+\newcommand{\seg}{\!-\!\!\!\!\:-}
+\newcommand{\lseg}{-\!\!\!\leftarrow\!\!}
+\newcommand{\rseg}{\!\rightarrow\!\!\!-}
+
+\newcommand{\dspt}{\displaystyle} 
+
+\begin{document}
+\begin{center}
+Theory of Linear Structures Notes
+\end{center}
+\begin{flushleft}
+\hangindent=1.1cm 
+Note: my own additions (besides notation) are in {\color{purple} purple}. Proceed with caution.\nl[6]
+A topology on $X$ is a set of open sets $T\subseteq \mathcal{P}(X)$ such that:\nl[6]
+ - $X \in T$\\
+ - $\emptyset \in T$\\
+ - $T$ is closed under arbitrary unions\\
+ - $T$ is closed under finite intersections\nl[6]
+A closed set is a complement of an open set.\\
+Neighborhoods of $p$ contain an open set containing $p$.\\
+$p$ is a boundary point of a set $S$ means every open set containing $p$ intersects both $S$ and $S^C$.\\
+A connected set is one not formed by the union of two disjoint non-empty open sets.\\
+A Hausdorff ($T_2$) space is one where every pair of distinct points lie in distinct open sets.\nl[7]
+\par\noindent\rule{\textwidth}{0.4pt}\nl[5]
+A \chb{Linear Structure} on a set $S$ is an ordered pair $\bra S, \Lambda \ket\ \ \Lambda \subseteq \mathcal{P}(S)$ satisfying axioms $\ch{LS}_1,\ \ch{LS}_2,\ \ch{LS}_3,\ \ch{LS}_4$\nl[6]
+\hsp[2]\textbf{lines} are elements of $\Lambda$\nl[12]
+
+$\ch{LS}_1$: $\forall\ \chb{line},\  |\chb{line}|\geq 2$\nl[6]\hsp[2]
+$\chb{minimal lines}$ are $\chb{lines}$ of size 2.\\\hsp[2]
+$\chb{segment}_\lambda$ denotes a subset of the $\chb{line}\ \lambda$ which is itself a $\chb{line}$.\\\hsp[2]
+$\chb{point}_\lambda$ denotes an element of the $\chb{line}\ \lambda $\\\hsp[2]
+(read: ``segments on lambda, points on lambda")\nl[6]
+\hsp[2] For distinct $\chb{points}_\lambda\ p,r,q$; $\ \ r\  \chb{between}_\lambda\ p,q \iff$ any $\chb{segment}_\lambda$ containing $p$ and $q$ also contains $r$.\\
+\hsp[2] Denote $p \seg r \seg q \ch{ on }\lambda \defeq r\ \chb{between}_\lambda\ p,q\ \ $ (equivalent to $q \seg r \seg p$ on $\lambda$).\\
+\hsp[2] For nondistinct points, e.g. $r\seg r\seg s$, the relation is false.\nl[12]
+
+$\ch{LS}_2$: Every \chb{line} $\lambda$ admits a linear order $>$ such that $\mu \in \mathcal{P}(\lambda) \in \Lambda \iff \mu$ is an interval of $>$\nl[5]
+
+{\color{purple}
+	${\ch{LS}_2}^*$: Equivalently, specify that for every \chb{line} $\lambda$:\\
+	
+	\hcm[2]For any three distinct points $p,q,r$, there is exactly one choice of $r$ for which $p\seg r \seg q$\\
+	
+	\hcm[2]For all $\chb{points}_\lambda\ p,q\ $the sets $PQ = \{r \in \lambda \st p\seg r \seg q\}$ and $\overline{PQ} = PQ\cup \{p,q\}$ are $\chb{segments}_\lambda$\\\hcm[2](provided $|PQ|\geq2$)\nl[5]
+	
+	\hcm This is enough to make the betweeness relation ``behave nicely", as we have eliminated loops and forks as candidates for lines by requiring the existence of at least one $r$ and enforced the linear order by the uniqueness of $r$, so we can show a proof of equivalence:\nl[5]
+	
+	\hcm For any $\chb{segment}_\lambda\ S$ containing $p, q$, we have $\overline{PQ} \subseteq S$. Supposing otherwise would mean there exists a $r \in \lambda \st p\seg r \seg q$ and $r \notin S$, which contradicts $S$ being a $\chb{segment}_\lambda\ S$ containing $p, q$ and the definition of $p\seg r \seg q$\nl[5]
+	 
+	\hcm Now, consider letting $p \seg r \seg s$ and $r\seg s\seg q$ on $\lambda$\nl[5]
+	\hcm${\ch{LS}_2}^*$ says exactly one of $p\seg q \seg r$, $q \seg p \seg r$, or $p \seg r \seg q$ are true on $\lambda$. We have $p \seg q \seg r$ admits a $\chb{segment}_\lambda\ \overline{PR}$ containing $q$. But as $r\seg s \seg q$, $\overline{PR}$ must contain both $q$ and $s$. $\overline{PR}$ is the smallest $\chb{segment}_\lambda$ containing $p$ and $r$, so any $\chb{segment}_\lambda$ containing $p$ and $r$ also contains $s$, i.e. $p\seg s \seg r$, contrary to the assumption that $p \seg r \seg s$. A similar case holds for $q \seg p \seg r$, leaving $p \seg r \seg q$ as the only acceptable choice to satisfy ${\ch{LS}_2}^*$. Similarly, we also have $p \seg s \seg q$.\nl[5]
+	
+	\hcm So ${\ch{LS}_2}^*$ justifies the notation $p \seg r \seg s \seg q \defeq (p \seg r \seg s$ and $r \seg s \seg q)$, as all derivable true statements can be found by removing interior terms. Explicitly, this shows transitivity at both the interior and end points, so transitivity holds for all points, giving two symmetric linear orders. The trivial exceptions of lines with 2 or 3 points are easily handled. Both open and closed intervals (corresponding to $PQ$ and $\overline{PQ}$, respectively) are $\chb{segments}_\lambda$, hence ${\ch{LS}_2}^* \imp \ch{LS}_2$\nl[5]
+}
+	
+\hcm The other direction $\ch{LS}_2 \imp {\ch{LS}_2}^*$ is easy: let $p>r>q \iff p\seg r\seg q$\nl[12]
+
+\hsp[2] For $x \in \lambda$, $\chb{endpoint}_\lambda(x) \defeq \nexists\ p,q \in \lambda \st p\seg x \seg q$\\
+\hsp[2] Denote $\chb{endpoints}_\lambda = \{\chb{point}_\lambda \st \chb{endpoint}_\lambda(\chb{point}_\lambda)\}$\\[6pt]\hsp[2]
+A \chb{line} is \chb{open} iff $|\chb{endpoints}|=0$\\\hsp[2]
+A \chb{line} is \chb{closed} iff $|\chb{endpoints}|=2$\\\hsp[2]
+A \chb{line} is \chb{clopen} iff $|\chb{endpoints}|=1$\nl\hsp[2]
+Theorem 2.1: A \chb{line} can have no more than 2 \chb{endpoints}.\\\hcm
+{\color{purple}
+	Alt Proof: Suppose the contrary. Consider ${\ch{LS}_2}^*$ and choose three endpoints. ${\ch{LS}_2}^*$ is immediately violated as there is no point between the other two.\nl[10]
+}
+
+$\ch{LS}_3$: If $\lambda \cap \mu$ contains only a common \chb{endpoint} $p$ and for all \chb{lines} $\gamma$ we have {\color{purple} $\gamma \subseteq (\lambda \cup \mu) - \{p\} \implies \gamma \subseteq \lambda$ or $\gamma \subseteq \mu$}, then $\lambda \cup \mu \in \Lambda$\nl[10]
+
+\hsp[2] Theorem 2.2: Let \chb{lines} $\lambda$ and $\mu$ satisfy the conditions for point splicing with a common endpoint $r$. Let $p \in (\lambda/r),\ q\in (\mu/r)$. Then $p\seg r \seg q$ on $\lambda\cup \mu$.\nl[10]
+
+$\ch{LS}_4$: Every set that admits a linear order $>$ such that the $\chb{closed lines} = \{\ch{closed intervals of }>\}$ is a line.\nl[10]
+
+\chb{quasi-lines} are elements of a $\lambda$ which satisfies $\ch{LS}_1$, $\ch{LS}_2$, and $\ch{LS}_3$.\nl[2]
+a set $\sigma$ is \chb{closed-connected} $ := |\sigma| \geq 2 $ and $\exists$ a linear order $>$ such that \\\hcm$\{\chb{closed quasi-lines}$ in $\sigma\} = \{$closed intervals of $>\}$\nl[10]
+
+Theorem 2.3: Given a Quasi-Linear Structure $\bra S, \Lambda\ket$, let $\Lambda^+$ denote the set of closed-connected subsets of $S$. Then $\bra S, \Lambda^+\ket $ is a Linear Structure.\nl[10]
+
+A Proto-Linear Structure $\bra S, \Lambda\ket$ satisfies $\ch{LS}_1,\ \ch{LS}_2$. Proto-lines are elements of $\Lambda$.\nl[10]
+
+Proto-lines $\lambda$, $\mu$ are point-spliceable iff they have only a single endpoint $p$ in common, and for all proto-lines $\gamma$, $\gamma \subseteq (\lambda \cup \mu) - \{p\} \implies \gamma \subseteq \lambda$ or $\gamma \subseteq \mu$\nl[10]
+
+Given a proto-linear structure $\bra S, \Lambda_N\ket,\ \Lambda_{N+1}$ is the set $ \Lambda_N$ plus the unions of all pairs of point-spliceable proto-lines in $\bra S, \Lambda_N\ket$\nl[10]
+
+Each $\lambda$ in $\Lambda_{N+1}$ has a pair of associated linear orders.\nl[10]
+
+Theorem 2.4: $\bra S, \Lambda_N\ket$ is a proto-linear structure $\implies \bra S, \Lambda_{N+1}\ket$ is a proto-linear structure\nl[10]
+
+Given a proto-linear structure $\bra S, \Lambda_0\ket$, let $\Lambda_\infty$ denote $ \bigcup_{i=0}^\infty\Lambda_i$\nl[10]
+
+Theorem 2.5: If $\bra S, \Lambda_0\ket$ is a proto-linear structure, $\bra S, \Lambda_\infty\ket$ is a quasi-linear structure\nl[10]
+
+Given any proto-linear structure $\bra S, \Lambda_0\ket$, $\bra S, \Lambda_\infty^+\ket$ is the linear structure \chb{generated} from $\Lambda_0$\nl[10]
+
+Linear order properties: dense, complete, discrete\\
+\chb{discrete space}, \chb{continuum}, \chb{rational space}, \chb{uniform space}\nl[10]
+
+$\sigma$ is a \chb{neighborhood} of $p$ means $p \in \sigma$ and $\chb{endpoint}_\lambda(p) \implies \exists\  (\chb{segment}_\lambda = \mu \subseteq \sigma) \ \chb{endpoint}_\mu(p)$\nl[10]
+
+Theorem 2.6: $X\supseteq \sigma \implies X$ is a \chb{neighborhood} of $p$\nl[5]
+
+Theorem 2.7: \{\chb{neighborhoods} of $p$\} are closed under finite intersection\nl[10]
+
+Two points $p$ and $q$ are \chb{adjacent} means $\{p, q\}$ is a \chb{minimal line}.\nl
+
+Theorem 2.8: In a \chb{discrete} linear structure, $\sigma$ is a \chb{neighborhood} of $p$ iff$\sigma$ contains $p$ and all points \chb{adjacent} to $p$.\nl
+
+$\sigma$ is an \chb{open set} iff $\sigma$ is a \chb{neighborhood} of all of its members.\nl
+
+Theorem 2.9: The \chb{open sets} on any linear Structure  $\bra S, \Lambda\ket$ are a topology on $S$.\nl
+
+Theorem 2.10: IN a \chb{discrete} linear structure, a set $\sigma$ is \chb{open} iff there is no \chb{minimal line} intersecting $\sigma$ and $\sigma^C$.\nl[3]
+(so the smallest non-empty \chb{open sets} partitions the \chb{discrete} space)
+
+
+
+
+
+
+\end{flushleft}
+\end{document}
