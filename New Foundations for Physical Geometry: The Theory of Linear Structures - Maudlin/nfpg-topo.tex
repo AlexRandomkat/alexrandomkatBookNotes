@@ -55,6 +55,7 @@
 \newcommand{\seg}{\!-\!\!\!\!\:-}
 \newcommand{\lseg}{-\!\!\!\leftarrow\!\!}
 \newcommand{\rseg}{\!\rightarrow\!\!\!-}
+\newcommand{\adj}{\circ\!\!\!\:\seg\!\!\!\!\:\circ\,}
 \newcommand{\ladj}{\circ\!\!\!\!\:\lseg\!\!\:\circ\,}
 \newcommand{\radj}{\,\circ\!\!\!\:\rseg\!\!\!\!\:\circ}
 
@@ -68,6 +69,7 @@ Theory of Linear Structures Notes
 \end{center}
 \begin{flushleft}
 \hangindent=1.1cm 
+$p\seg q\hcm p \lseg q \hcm p\rseg q \hcm p \adj q \hcm p\ladj q \hcm p\radj q$\\
 Note: my own additions (besides notation) are in {\color{purple} purple}. Proceed with caution.\nl[6]
 A topology on $X$ is a set of open sets $T\subseteq \mathcal{P}(X)$ such that:\nl[6]
  - $X \in T$\\
@@ -86,7 +88,7 @@ A \chb{Point-Spliced Linear Structure} on a set $S$ is an ordered pair $\bra S, 
 \hsp[2]\textbf{lines} are elements of $\Lambda$\nl[12]
 
 $\ch{LS}_1$: $\forall\ \lambda\ \big(\ |\lambda|\geq 2\ \big)$\nl[6]\hsp[2]
-$\chb{minimal lines}$ are $\chb{lines}$ of size 2.\\\hsp[2]
+$\chb{minimal lines}$ are $\chb{lines}$ of size 2 ($p\adj q$ denotes the minimal line connecting $p,q$, also acts as a binary relation which is true if such a minimal line exists) \\\hsp[2]
 $\chb{segment}_\lambda(\mu) \defeq \mu \subseteq \lambda$ and $\mu \in \Lambda$.\\\hsp[2]
 $\chb{point}_\lambda$ denotes an element of the $\chb{line}\ \lambda $\\\hsp[2]
 (read: ``segments on lambda, points on lambda")\nl[6]
@@ -94,7 +96,7 @@ $\chb{point}_\lambda$ denotes an element of the $\chb{line}\ \lambda $\\\hsp[2]
 \hsp[2] Denote $p \seg r \seg q \ch{ on }\lambda \defeq r\ \chb{between}_\lambda\ p,q\ \ $ (equivalent to $q \seg r \seg p$ on $\lambda$).\\
 \hsp[2] For nondistinct points, e.g. $r\seg r\seg s$, the relation is false.\nl[12]
 
-$\ch{LS}_2$: Every \chb{line} $\lambda$ admits a linear order $>$ such that $\mu \in \mathcal{P}(\lambda) \in \Lambda \iff \mu$ is an interval of $>$\nl[5]
+$\ch{LS}_2$: Every \chb{line} $\lambda$ admits a linear order $>$ such that $\mu \in \Lambda \iff \mu$ is an interval of $>$\nl[5]
 
 {\color{purple}
 	${\ch{LS}_2}^*$: Equivalently, specify that for every \chb{line} $\lambda$:\\
@@ -103,7 +105,7 @@ $\ch{LS}_2$: Every \chb{line} $\lambda$ admits a linear order $>$ such that $\mu
 	
 	\hcm[2]For all $\chb{points}_\lambda\ p,q\ $the sets $PQ = \{r \in \lambda \st p\seg r \seg q\}$ and $\overline{PQ} = PQ\cup \{p,q\}$ are $\chb{segments}_\lambda$\\\hcm[2](provided $|PQ|\geq2$)\nl[5]
 	
-	\hcm This is enough to make the betweeness relation ``behave nicely", as we have eliminated loops and forks as candidates for lines by requiring the existence of at least one $r$ and enforced the linear order by the uniqueness of $r$, so we can show a proof of equivalence:\nl[5]
+	\hcm This is enough to make the betweeness relation ``behave nicely", as we have eliminated  forks as candidates for lines by requiring the existence of at least one $r$ and removed loops by the uniqueness of $r$, enforcing a linear order. So we can show a proof of equivalence:\nl[5]
 	
 	\hcm For any $\chb{segment}_\lambda\ S$ containing $p, q$, we have $\overline{PQ} \subseteq S$. Supposing otherwise would mean there exists a $r \in \lambda \st p\seg r \seg q$ and $r \notin S$, which contradicts $S$ being a $\chb{segment}_\lambda\ S$ containing $p, q$ and the definition of $p\seg r \seg q$\nl[5]
 	 
@@ -115,6 +117,10 @@ $\ch{LS}_2$: Every \chb{line} $\lambda$ admits a linear order $>$ such that $\mu
 	
 \hcm The other direction $\ch{LS}_2 \imp {\ch{LS}_2}^*$ is easy: identify $p>r>q$ with $p\seg r\seg q$\nl[12]
 
+\hcm {\color{purple}
+	${\ch{LS}_2}^*$ is enough to push the $p\seg q$ notation further, allowing us to make well-formed longer chains. It would be easy to repeat the tricks above to show $p\seg x \seg r$ and $r \seg y \seg q \implies x \seg r \seg y$, which allows us to write $p\seg x \seg r \seg y \seg q$ as shorthand for all those true statements from deleting interior terms. But since we showed the existence of a linear order, there is no need for the now obvious.
+}\nl[10]
+
 \hsp[2] $\chb{endpoint}_\lambda(x) \defeq x \in \lambda$ and $\nexists\ p,q \in \lambda \st p\seg x \seg q$\\
 \hsp[2] Denote $\chb{endpoints}_\lambda = \{p \st \chb{endpoint}_\lambda(p)\}$\\[6pt]\hsp[2]
 $\lambda$ is \chb{open} $\ \ \, \defeq |\chb{endpoints}_\lambda|=0$\\\hsp[2]
@@ -125,9 +131,14 @@ Theorem 2.1: A \chb{line} can have no more than 2 \chb{endpoints}.\\\hcm
 	Alt Proof: Suppose the contrary. Consider ${\ch{LS}_2}^*$ and choose three endpoints. ${\ch{LS}_2}^*$ is immediately violated as there is no point between the other two.\nl[10]
 }
 
-$\ch{LS}_3$: If $\lambda \cap \mu$ contains only a common \chb{endpoint} $p$ and for all \chb{lines} $\gamma$ we have {\color{purple} $\gamma \subseteq (\lambda \cup \mu) - \{p\} \implies \gamma \subseteq \lambda$ or $\gamma \subseteq \mu$}, then $\lambda \cup \mu \in \Lambda$\nl[10]
+$\ch{LS}_3$: If $\lambda \cap \mu$ contains only a common \chb{endpoint} $r$ and for all \chb{lines} $\gamma$ we have {\color{purple} $\gamma \subseteq (\lambda \cup \mu) - \{r\} \implies \gamma \subseteq \lambda$ or $\gamma \subseteq \mu$}, then $\lambda \cup \mu \in \Lambda$\nl[10]
 
-\hsp[2] Theorem 2.2: Let \chb{lines} $\lambda$ and $\mu$ satisfy the conditions for point splicing with a common endpoint $r$. Let $p \in (\lambda/r),\ q\in (\mu/r)$. Then $p\seg r \seg q$ on $\lambda\cup \mu$.\nl[10]
+\hsp[2] Theorem 2.2: Let \chb{lines} $\lambda$ and $\mu$ satisfy the conditions for point splicing with a common endpoint $r$. Let $p \in (\lambda/r),\ q\in (\mu/r)$. Then $p\seg r \seg q$ on $\lambda\cup \mu$.\\
+\hcm {\color{purple}
+	Alt proof: In contrapositive form, $\ch{LS}_3$: $ \gamma \nsubseteq \lambda$ and $\gamma \nsubseteq \mu \implies \gamma \nsubseteq (\lambda \cup \mu) - \{r\}$. So $p \in \gamma$ and $q\in \gamma \implies \gamma \nsubseteq (\lambda \cup \mu) - \{r\}$. If we take $\chb{segment}_{\lambda\cup\mu}(\gamma)$ (i.e. enforcing $\gamma\subseteq \lambda\cup\mu$), we must have $r\in \gamma$, i.e. $p\seg r\seg q$.\nl[10]
+	
+	\hcm (had random thought about the usage of proof by contradiction, compare this to Maudlin's proof. Which feels more like showing how the pieces fit exactly together in the right way? Like things gradually falling into place? It is better if every usage of proof by contradiction can be relegated to the automatic/unwritten level.)
+}\nl[10]
 
 $\ch{LS}_4$: Every set with a linear order $>$ such that the $\{\chb{closed lines}\} = \{\ch{closed intervals of }>\}$ is a line.\nl[5]
 
